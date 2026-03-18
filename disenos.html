@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseños de Prototipo | ¿De quién es la culpa?</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Special+Elite&family=Cutive+Mono&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --accent-vinotage: #4a2c2c;
+            --accent-autumn: #c88d6b;
+            --accent-coral: #ff6b6b;
+            --bg-creme: #fdfaf5;
+            --text-main: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-creme);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .header {
+            padding: 40px 5%;
+            background: white;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--accent-vinotage);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            transition: transform 0.3s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 5%;
+        }
+
+        .section-title {
+            font-family: 'Special Elite', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--accent-vinotage);
+        }
+
+        .section-subtitle {
+            font-family: 'Cutive Mono', monospace;
+            color: var(--accent-autumn);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+        }
+
+        /* Design Showcase Grid */
+        .design-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+        }
+
+        .design-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .design-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .design-info {
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent-coral);
+            padding-left: 20px;
+        }
+
+        .design-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .design-info p {
+            color: #666;
+            max-width: 600px;
+        }
+
+        /* Mockup Containers */
+        .mockup-frame {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .mockup-desktop {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #eee;
+            border-radius: 10px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mockup-browser-bar {
+            height: 30px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .red {
+            background: #ff5f56;
+        }
+
+        .yellow {
+            background: #ffbd2e;
+        }
+
+        .green {
+            background: #27c93f;
+        }
+
+        .mockup-content {
+            flex-grow: 1;
+            background: var(--bg-creme);
+            padding: 40px;
+            overflow: hidden;
+        }
+
+        /* Actual Design Elements within Mockups */
+        .hero-design {
+            height: 300px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/img/moodboard.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .hero-design h1 {
+            font-family: 'Special Elite', cursive;
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-coral {
+            background: var(--accent-coral);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            margin-top: 20px;
+        }
+
+        .grid-design {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .grid-card {
+            background: white;
+            height: 250px;
+            border-radius: 15px;
+            border-top: 6px solid var(--accent-vinotage);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+            padding: 25px;
+        }
+
+        .mockup-mobile {
+            width: 320px;
+            height: 600px;
+            margin: 0 auto;
+            border: 12px solid #222;
+            border-radius: 40px;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mobile-content {
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mobile-hero {
+            height: 150px;
+            background: var(--accent-vinotage);
+            border-radius: 15px;
+            padding: 15px;
+            color: white;
+        }
+
+        .mobile-card {
+            height: 100px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent-autumn);
+        }
+
+        footer {
+            padding: 60px 5%;
+            text-align: center;
+            background: white;
+            color: #999;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="mockup.html" class="back-link">← VOLVER AL HUB</a>
+        <div style="font-family: 'Cutive Mono', monospace; font-size: 0.8rem; font-weight: bold;">[ DISEÑOS DE INTERFAZ
+            ]</div>
+    </header>
+
+    <div class="container">
+        <h1 class="section-title">Diseño de Interfaz</h1>
+        <p class="section-subtitle">Visualización de Prototipo de Alta Fidelidad</p>
+
+        <div class="design-showcase">
+
+            <!-- Desktop Layout -->
+            <div class="design-item visible">
+                <div class="design-info">
+                    <h2>Desktop Hub (1920x1080)</h2>
+                    <p>Una interfaz limpia y cinematográfica diseñada para la inmersión. Enfoque en tipografía clásica y
+                        jerarquía visual clara.</p>
+                </div>
+                <div class="mockup-frame">
+                    <div class="mockup-desktop">
+                        <div class="mockup-browser-bar">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="hero-design">
+                                <h1>¿De quién es la culpa?</h1>
+                                <p style="font-family: 'Cutive Mono', monospace; font-size: 0.9rem;">UN CORTOMETRAJE DE
+                                    IGNACIO FREITES</p>
+                                <div class="btn-coral">VER CORTOMETRAJE</div>
+                            </div>
+                            <div class="grid-design">
+                                <div class="grid-card">
+                                    <div
+                                        style="width: 40px; height: 4px; background: var(--accent-vinotage); margin-bottom: 20px;">
+                                    </div>
+                                    <div style="font-weight: bold; margin-bottom: 10px;">EL GUIÓN</div>
+                                    <div style="width: 100%; height: 2px; background: #eee; margin-bottom: 10px;"></div>
+                                    <div style="width: 80%; height: 2px; background: #eee;"></div>
+                                </div>
+                                <div class="grid-card" style="border-top-color: var(--accent-autumn);">
+                                    <div
+                                        style="width: 40px; height: 4px; background: var(--accent-autumn); margin-bottom: 20px;">
+                                    </div>
+                                    <div style="font-weight: bold; margin-bottom: 10px;">MOODBOARD</div>
+                                    <div style="width: 100%; height: 2px; background: #eee; margin-bottom: 10px;"></div>
+                                    <div style="width: 80%; height: 2px; background: #eee;"></div>
+                                </div>
+                                <div class="grid-card" style="border-top-color: var(--accent-coral);">
+                                    <div
+                                        style="width: 40px; height: 4px; background: var(--accent-coral); margin-bottom: 20px;">
+                                    </div>
+                                    <div style="font-weight: bold; margin-bottom: 10px;">PODCAST</div>
+                                    <div style="width: 100%; height: 2px; background: #eee; margin-bottom: 10px;"></div>
+                                    <div style="width: 80%; height: 2px; background: #eee;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Layout -->
+            <div class="design-item visible">
+                <div class="design-info">
+                    <h2>Mobile Experience (iPhone 15 Pro)</h2>
+                    <p>Diseño optimizado para pulgares con navegación simplificada y elementos de UI generosos.
+                        Adaptabilidad total del branding.</p>
+                </div>
+                <div class="mockup-mobile">
+                    <div class="mobile-content">
+                        <div class="mobile-hero">
+                            <div style="font-family: 'Special Elite', cursive; font-size: 1.2rem; margin-bottom: 5px;">
+                                ¿DE QUIÉN?</div>
+                            <div style="font-size: 0.6rem; opacity: 0.8;">EL CORTOMETRAJE</div>
+                        </div>
+                        <div class="mobile-card"></div>
+                        <div class="mobile-card" style="border-left-color: var(--accent-coral);"></div>
+                        <div class="mobile-card" style="border-left-color: var(--accent-vinotage);"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        [ PROTOTIPO DE DISEÑO ] • GESTIÓN Y DESARROLLO WEB • 2026
+    </footer>
+
+    <script>
+        // Simple scroll animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.design-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            items.forEach(item => observer.observe(item));
+        });
+    </script>
+</body>
+
+</html>

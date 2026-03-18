@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUION LITERARIO | ¿DE QUIÉN ES LA CULPA?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --paper-color: #fdfaf5;
+            --font-script: 'Special Elite', 'Courier New', Courier, monospace;
+        }
+
+        body.page-guion {
+            background: #2b2b2b;
+            /* Dark background to make the 'paper' pop */
+            overflow-x: hidden;
+        }
+
+        .script-container {
+            perspective: 1500px;
+            padding: 50px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .script-page {
+            background-color: var(--paper-color);
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
+                url('https://www.transparenttextures.com/patterns/notebook.png');
+            /* Subtle paper grain */
+            color: #1a1a1a;
+            font-family: var(--font-script);
+            width: 850px;
+            min-height: 1100px;
+            /* A4-ish ratio */
+            padding: 80px 100px;
+            box-shadow:
+                0 30px 60px rgba(0, 0, 0, 0.5),
+                0 0 5px rgba(0, 0, 0, 0.1) inset;
+            position: relative;
+            transform: rotateX(2deg) rotateY(-1deg);
+            border-radius: 2px;
+            line-height: 1.2;
+            font-size: 1.05rem;
+        }
+
+        /* Hole punches */
+        .script-page::after {
+            content: "";
+            position: absolute;
+            left: 30px;
+            top: 100px;
+            width: 20px;
+            height: 20px;
+            background: #2b2b2b;
+            border-radius: 50%;
+            box-shadow: 0 400px 0 #2b2b2b, 0 800px 0 #2b2b2b;
+            opacity: 0.8;
+        }
+
+        .script-header {
+            text-align: center;
+            margin-bottom: 80px;
+            border-bottom: 2px dotted #ccc;
+            padding-bottom: 40px;
+        }
+
+        .scene-heading,
+        .slugline {
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 2rem 0 1rem 0;
+            display: block;
+        }
+
+        .action {
+            margin: 1rem 0;
+            text-align: left;
+            width: 100%;
+            word-spacing: -2px;
+        }
+
+        .character {
+            text-align: center;
+            width: 50%;
+            margin: 2rem auto 0.2rem auto;
+            text-transform: uppercase;
+        }
+
+        .parenthetical {
+            text-align: center;
+            width: 40%;
+            margin: 0 auto 0.2rem auto;
+            font-size: 0.95rem;
+            font-family: 'Special Elite', monospace;
+        }
+
+        .dialogue {
+            text-align: center;
+            width: 70%;
+            margin: 0 auto 1.5rem auto;
+            line-height: 1.3;
+            font-family: 'Special Elite', monospace;
+        }
+
+        .transition {
+            text-align: right;
+            text-transform: uppercase;
+            margin: 2rem 0;
+        }
+
+        /* Paper Aesthetic & Layout */
+        body.page-script {
+            background: #2b2b2b;
+            /* Cinematic dark background */
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .script-wrapper {
+            perspective: 1500px;
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .script-paper {
+            background-color: #fdfaf5;
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0) 100%),
+                url('https://www.transparenttextures.com/patterns/notebook.png');
+            /* Paper grain */
+            color: #1a1a1a;
+            font-family: 'Special Elite', Courier, monospace;
+            width: 850px;
+            min-height: 1100px;
+            padding: 100px 120px;
+            box-shadow:
+                0 40px 100px rgba(0, 0, 0, 0.6),
+                0 0 10px rgba(0, 0, 0, 0.1) inset;
+            position: relative;
+            transform: rotateX(1deg) rotateY(-0.5deg);
+            border-radius: 2px;
+            line-height: 1.25;
+            font-size: 1.05rem;
+        }
+
+        /* Hole punches */
+        .script-paper::before {
+            content: "";
+            position: absolute;
+            left: 30px;
+            top: 100px;
+            width: 20px;
+            height: 20px;
+            background: #2b2b2b;
+            border-radius: 50%;
+            box-shadow: 0 450px 0 #2b2b2b, 0 900px 0 #2b2b2b;
+            z-index: 2;
+        }
+
+        .back-btn-retro {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            font-family: 'Special Elite', cursive;
+            background: #111;
+            color: #fff;
+            padding: 12px 24px;
+            text-decoration: none;
+            border: 2px solid #fff;
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+            font-size: 0.9rem;
+            z-index: 2000;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+
+        .back-btn-retro:hover {
+            background: #fff;
+            color: #111;
+            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+            transform: translate(3px, 3px);
+        }
+
+        .script-header {
+            text-align: center;
+            margin-bottom: 80px;
+            border-bottom: 2px dotted #ccc;
+            padding-bottom: 40px;
+        }
+
+        .scene-heading,
+        .slugline {
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 2.5rem 0 1rem 0;
+            display: block;
+        }
+
+        .action {
+            margin: 1.2rem 0;
+            text-align: left;
+            width: 100%;
+        }
+
+        .character {
+            text-align: center;
+            width: 50%;
+            margin: 2.5rem auto 0.3rem auto;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .parenthetical {
+            text-align: center;
+            width: 40%;
+            margin: 0 auto 0.3rem auto;
+            font-size: 0.95rem;
+            font-family: 'Special Elite', monospace;
+            /* Unified Font */
+        }
+
+        .dialogue {
+            text-align: center;
+            width: 75%;
+            margin: 0 auto 1.8rem auto;
+            line-height: 1.4;
+            font-family: 'Special Elite', monospace;
+            /* Unified Font */
+        }
+    </style>
+</head>
+
+<body class="page-script">
+
+    <a href="mockup.html" class="back-btn-retro">← VOLVER AL HUB</a>
+
+    <div class="script-wrapper">
+        <section class="script-paper">
+            <header class="script-header">
+                <h1 style="font-size: 2.8rem; margin-bottom: 10px;">¿DE QUIÉN ES LA CULPA?</h1>
+                <p style="letter-spacing: 6px; font-size: 0.9rem;">GUION LITERARIO - BORRADOR FINAL</p>
+                <p style="margin-top: 30px; font-size: 1.2rem;">Escrito por: <strong>Ignacio Freites</strong></p>
+                <p style="font-size: 0.75rem; margin-top: 60px; color: #888;">[ PROPIEDAD INTELECTUAL - ARTHEMIS STUDIOS
+                    2026 ]</p>
+            </header>
+
+            <div class="credits"
+                style="font-size: 0.8rem; color: #666; margin-top: 40px; text-align: center; font-family: 'Poppins', sans-serif;">
+                Con colaboración de Sergio Rivas, Pablo Laguna, Pablo Cotelo, Inés Peiró, Kevin Borja y Jared Arrese
+            </div>
+
+            <div class="scene-heading">ESCENA 1:</div>
+            <div class="slugline">INT - PLATÓ DE NOTICIAS - DÍA</div>
+
+            <div class="action">
+                Esc - Con imágenes recurso, se muestra la historia de JAIME y de Máxim +, dichas por la Voz en off de un
+                presentador. Se muestran los créditos iniciales.
+            </div>
+
+            <div class="character">PRESENTADOR (V.O)</div>
+            <div class="dialogue">
+                La inteligencia artificial siempre había sido una promesa de mejora para el ser humano. Desde la llegada
+                del internet se ha idealizado la llegada de una máquina que esté al servicio de las familias, empresas y
+                personas.
+            </div>
+
+            <div class="action">
+                Imágenes recurso de la historia de la tecnología (Conferencias de Microsoft, Apple, y películas antiguas
+                donde salgan robots).
+            </div>
+
+            <div class="character">PRESENTADOR (V.O)</div>
+            <div class="dialogue">
+                Es así como surgió la competencia de las IAs a principios de la década de 2020. Chat GPT, Grok, Gemini.
+                Parecía que la competencia estaba entre estos programas, hasta la llegada de Jaime Hurtado.
+            </div>
+
+            <div class="action">
+                Imágenes recurso de presentación de las IAs y sus logos.
+            </div>
+
+            <div class="character">PRESENTADOR (V.O)</div>
+            <div class="dialogue">
+                El empresario español presentó Máxim + sin tener ni idea la repercusión que iba a generar. Por su clara
+                ventaja tecnológica con respecto al resto de la oferta en el mercado, Jaime le dió a la humanidad el
+                asistente que tanto buscaba. Parecía que la utopía humano - tecnología estaba más cerca que nunca.
+            </div>
+
+            <div class="action">
+                Imágenes recurso de JAIME en alguna conferencia, trabajando desde su ordenador, siendo fotografiado y
+                andando por la calle.
+            </div>
+
+            <div class="character">PRESENTADOR (V.O)</div>
+            <div class="dialogue">
+                Pero desde su salida al público en 2024, Máxim + se ha visto envuelta en varias polémicas. Cientos de
+                usuarios se han quejado de daños psicológicos y problemas éticos causados por el producto de Jaime,
+                incluso viéndose esté involucrado en varios casos legales, siendo el más famoso hasta ahora el juicio
+                por robos de identidad del año pasado. Hasta ahora, la IA ha salido ilesa de estos cargos jurídicos. Sin
+                embargo, hoy se celebrará el juicio por la muerte de Ahmed Al Hassim, el primer caso de asesinato que
+                involucra a Máxim +. Jaime, que fue citado al juicio, presentó las siguientes declaraciones:
+            </div>
+
+            <div class="action">
+                Imágenes recurso de capturas de pantalla de casos de Maxim +, y de MÁXIMO con traje de prisionero
+                entrando a una sala. JAIME es entrevistado en la calle.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="parenthetical">(En entrevista)</div>
+            <div class="dialogue">
+                Es una pena lo que pasó con ese chico. Quiero darle mis condolencias a la familia. Desde mi lugar, puedo
+                decir que haremos todo lo que sea posible para que este tipo de casos no se vuelva a repetir.
+            </div>
+
+            <div class="character">PRESENTADOR</div>
+            <div class="parenthetical">(En plató)</div>
+            <div class="dialogue">
+                Lo que sí es seguro es que tanto el público y los medios están en un debate nunca antes visto en nuestra
+                historia. Esto ya no trata solo de un asesinato cualquiera. Nos tenemos que hacer la pregunta de hasta
+                qué punto tiene la tecnología culpa de nuestros actos, y si hay alguien más que el propio asesino que
+                tiene las manos manchadas de sangre.
+            </div>
+
+            <div class="scene-heading">ESCENA 2:</div>
+            <div class="slugline">INT - BAÑO PÚBLICO - DÍA</div>
+
+            <div class="action">
+                Esc - JAIME (hombre de unos 30 años aproximadamente, con traje) se encuentra comiendo un sandwich
+                mientras se recuesta en el mueble del lavamanos. Mientras tanto, MIGUEL (hombre adulto con traje) camina
+                en círculos mientras revisa carpetas que tiene a mano.
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="parenthetical">(Revisando sus papeles)</div>
+            <div class="dialogue">
+                … Y luego de que Máximo testifique nos tocará a nosotros, y ahí es cuando necesito que recuerdes lo que
+                te dije. Yo me ocuparé de todo, solo necesito que no improvises en nada, tu céntrate en decir lo que
+                acordamos y en nada habremos terminado, ¿De acuerdo? Señor Hurtado, ¿Está atendiendo?
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="parenthetical">(Masticando)</div>
+            <div class="dialogue">
+                Que si, pesado.
+            </div>
+
+            <div class="action">
+                JAIME se lava las manos y se ve al espejo.
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="parenthetical">(Guardando sus papeles)</div>
+            <div class="dialogue">
+                Perfecto, pues deberíamos ir entrando, ya nos convocaron a la sala de audiencias.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                ¿Tengo algo entre los dientes?
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="dialogue">
+                No
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="parenthetical">(Revisándose en el espejo)</div>
+            <div class="dialogue">
+                ¿Seguro? Es que noto algo por aquí…
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="dialogue">
+                Señor Hurtado, deberíamos ir yendo a la sala.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="parenthetical">(Sacando mentas)</div>
+            <div class="dialogue">
+                Que sí, que dame un segundo coño. ¿Por qué tantos nervios?
+            </div>
+
+            <div class="action">
+                JAIME le da una palmada en la espalda a MIGUEL.
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="dialogue">
+                Pues porque es mi trabajo que todo salga perfecto.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Y todo va a salir de maravilla. Si eres mi abogado por algo, joder. Tente un poco de confianza. Mira,
+                ¿Quieres una menta?
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="dialogue">
+                No, no hace…
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Venga, toma una menta, que hemos comido atún. Relájate hombre, si es un caso más del montón, ¿No?
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="dialogue">
+                Pues a ver, es un homicidio. No es poca cosa.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Bueno vale, si. Pero me refiero a que es otro caso de un nini del montón que quiere quitarme algo de
+                pasta, echarme la culpa o cualquier otra cosa. Si en el fondo todo es lo mismo.
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="dialogue">
+                Ya, pero esto es un homicidio. Es un poco más serio.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                ¿Pero qué culpa tengo yo de que un loco use mi programa? Miles de estudiantes hacen su tarea con Máxim
+                plus, ¿Eso quiere decir que yo soy responsable de todo eso?
+            </div>
+
+            <div class="action">
+                JAIME y MIGUEL salen del baño.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="parenthetical">(Arreglándose el reloj)</div>
+            <div class="dialogue">
+                De hecho ví el otro día que se volvió viral un caso en el que una mujer se divorcio de su marido por
+                recomendación de la IA. ¿Qué soy ahora, el amante? ¿Ves como no tiene sentido?
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="dialogue">
+                Por su puesto señor Hurtado, y le aseguro que no tendrá problema alguno, solamente necesito que se
+                mantenga sereno y todo va a salir perfectamente…
+            </div>
+
+            <div class="action">
+                FAN 1 y FAN 2 interrumpen al encontrarse con JAIME.
+            </div>
+
+            <div class="character">FAN 1</div>
+            <div class="dialogue">
+                Disculpa, ¿Tú eres el creador de Maxim +,no?
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                El mismo.
+            </div>
+
+            <div class="character">FAN 2</div>
+            <div class="parenthetical">(Emocionado)</div>
+            <div class="dialogue">
+                No lo puedo creer, he aprobado la selectividad gracias a Maxim +, ¿nos podemos tomar una foto contigo?
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Por supuesto.
+            </div>
+
+            <div class="character">FAN 1</div>
+            <div class="parenthetical">(A Miguel)</div>
+            <div class="dialogue">
+                Disculpa, ¿Puedes tomarnos la foto?
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="dialogue">
+                A ver… Sonrían…
+            </div>
+
+            <div class="action">
+                MIGUEL le toma la fotos JAIME con FAN 1 y FAN 2.
+            </div>
+
+            <div class="character">FAN 2</div>
+            <div class="dialogue">
+                Muchas gracias.
+            </div>
+
+            <div class="action">
+                JAIME saluda con la mano a sus fans mientras se van.
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="dialogue">
+                Señor Hurtado…
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Que si, ostia. Mira que te pones tonto.
+            </div>
+
+            <div class="action">
+                JAIME entra entre risas seguido de MIGUEL.
+            </div>
+
+            <div class="scene-heading">ESCENA 3:</div>
+            <div class="slugline">INT - SALA DE JUICIO - DÍA</div>
+
+            <div class="action">
+                Esc - JAIME y MIGUEL entran en la sala. JAMIE entra entre risas, pero nadie en la sala hace ningún
+                ruido. MIGUEL le da un golpe en el hombro a JAIME, y este le sigue hasta el frente de la sala. JAIME
+                analiza la sala mientras camina. Observa a una familia junto a su abogado de un lado. Del otro lado, el
+                acusado vestido de naranja junto a su abogado. Todo el mundo observa a JAIME, quien se sienta tranquilo.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Madre mía, cómo está el ambiente…
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="parenthetical">(Revisando apuntes)</div>
+            <div class="dialogue">
+                Ya, es lo que tiene…
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="parenthetical">(A personas de atrás)</div>
+            <div class="dialogue">
+                Buenas tardes…
+            </div>
+
+            <div class="action">
+                Las personas no le responden. JAIME se acomoda el saco y suspira.
+            </div>
+
+            <div class="part-divider">PARTE 1</div>
+
+            <div class="scene-heading">ESCENA 4:</div>
+            <div class="slugline">INT - SALA DE JUICIO - DÍA</div>
+
+            <div class="action">
+                Esc: Un golpe de martillo da inicio a la sesión. El ABOGADO de la familia Al Hassim se levanta. Pone su
+                mano en una biblia.
+            </div>
+
+            <div class="character">ABOGADO</div>
+            <div class="dialogue">
+                Juro decir la verdad, solo la verdad y nada más que la verdad.
+            </div>
+
+            <div class="action">
+                El ABOGADO empieza su discurso.
+            </div>
+
+            <div class="character">ABOGADO</div>
+            <div class="dialogue">
+                Ahmed Al Hassim fue un chico que nació en el hospital Ramón y Cajal en Madrid, un 16 de diciembre de
+                2001. Vivió toda su vida en el barrio de Lavapiés, con sus padres, su abuela y sus 3 hermanos. Su madre,
+                aquí presente, me pudo dar un dibujo que hizo el mismo Ahmed. En este se le puede ver a él, con la
+                camiseta de la selección española, junto a jugadores de fútbol, levantando el mundial.
+            </div>
+
+            <div class="action">
+                La MADRE DE AHMED llora.
+            </div>
+
+            <div class="character">ABOGADO</div>
+            <div class="dialogue">
+                Estudió en el Federico García Lorca, colegio público de Madrid, toda su etapa como estudiante. En esta
+                etapa vivió una niñez como cualquiera se puede imaginar. Tenemos fotos de Ahmed celebrando el mundial
+                con sus compañeros de primaria, registros de cómo tuvo que dejar el equipo de fútbol de su colegio por
+                la crisis de 2008, imágenes de sus viajes de verano a Murcia, y videos de su graduación como estudiante
+                de sociales, con una nota promedio - alta. Entró y estudió durante 4 años periodismo en la universidad
+                complutense, utilizando metro y becas para poder terminar sus estudios. Y en el año 2020, a pesar de las
+                dificultades, logró entrar como asistente técnico en Televisión Española. Os cuento todo esto porque
+                hemos visto una historia de un jóven común y corriente, que nunca se metió con nadie, que salió de una
+                familia humilde para poder pelear por sus sueños. Nunca hizo nada para merecerse tan siquiera el odio de
+                alguien.
+            </div>
+
+            <div class="scene-heading">ESCENA 5:</div>
+            <div class="slugline">INT - SALA DE JUICIO - DÍA</div>
+
+            <div class="action">
+                Esc - El JEFE, la EXPAREJA y la MADRE DE AHMED hablan como testigos.
+            </div>
+
+            <div class="character">JEFE</div>
+            <div class="dialogue">
+                Ahmed era un chico muy trabajador, siempre estaba presentando ideas, ayudando a sus compañeros. Un día
+                recuerdo que necesitábamos urgentemente una idea para un programa corto. Estábamos todos reunidos casi
+                que arrancándonos el cabello. Y llegó él con una carpeta gigante con ideas. No terminamos utilizando
+                ninguna, pero recuerdo el ímpetu con el que contaba cada una de ellas…
+            </div>
+
+            <div class="character">EXPAREJA</div>
+            <div class="parenthetical">(Voz quebrada)</div>
+            <div class="dialogue">
+                Le extraño. Le extraño mucho. Cuando me sentía así era él, el que me lograba sacar una sonrisa y
+                alegrarme el día. Solo quisiera abrazarlo una vez más, decirle que no hizo nada malo. Teníamos tantos
+                planes para hacer. No es justo, tenía tantas ganas de vivir, de hacer proyectos…
+            </div>
+
+            <div class="character">MADRE</div>
+            <div class="parenthetical">(Voz quebrada)</div>
+            <div class="dialogue">
+                Pensaba que iba a poder llegar al día de hoy con un poco más de calma. Pero no hay minuto desde hace
+                semanas que no pueda quitarme a mi chico de la cabeza. Mi Ahmed. Me han quitado a mi hijo. Me han
+                quitado parte de mi vida. Era mi tesoro. No puedo entrar a su habitación. Todavía tiene su olor. No me
+                puedo hacer la idea de que me arrebataron a mi bebé…
+            </div>
+
+            <div class="scene-heading">ESCENA 6:</div>
+            <div class="slugline">INT - SALA DE JUICIO - DÍA</div>
+
+            <div class="action">
+                Esc - El abogado sigue su discurso.
+            </div>
+
+            <div class="character">ABOGADO</div>
+            <div class="dialogue">
+                Seis cosas aborrece el Señor, y aun siete abomina su alma: los ojos altivos, la lengua mentirosa, las
+                manos derramadoras de sangre inocente, el corazón que maquina pensamientos inicuos, los pies presurosos
+                para correr al mal. Cito este proverbio de la biblia porque cada vez que lo leo me recuerda a Máximo.
+                Bueno, todas excepto una. Este chico miró a un jóven que quería progresar con ojos altivos, ya que no
+                podía soportar que alguien que no fuera él tuviera una vida que él quería. Qué más decir que tiene sus
+                manos empapadas de sangre inocente, fruto de sus pensamientos inicuos. La única cosa que no cumple, su
+                señoría, es su lengua mentirosa. Me imagino que no estamos aquí reunidos para averiguar si Máximo
+                asesinó a Ahmed, ya que hay un informe forense, muestras de ADN, declaraciones del asesino y mil otras
+                pruebas que lo corroboran. Estamos aquí porque queremos saber el porqué de sus hechos. ¿Qué lleva a un
+                chico que lo tuvo todo a quitárselo a él mismo? Privación del juicio o del uso de la razón, acción o
+                dicho disparatado, exaltación del ánimo o de los ánimos o gran intensidad o exceso en cualquier línea
+                son las cuatro definiciones de locura que se encuentran en la RAE. Dicho esto, les dejo un podcast super
+                informativo que alguien que, cito textualmente, solamente alguien que esté utilizando la razón puede
+                llegar a comprender. Audio del 14 de mayo del 2027.
+            </div>
+
+            <div class="action">
+                El ABOGADO de Ahmed pone un audio de un podcast producido por Máximo, la sala entera reacciona a lo
+                dicho.
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="parenthetical">(En su podcast)</div>
+            <div class="dialogue">
+                Vale, ahora sí, está cargando… Ahora sí, jaja, lo logramos gente, aquí tenemos a Vanessa (Sonido de
+                inicio de grabado) Vanessa, llegamos, a pesar de la censura del pueblo, a 14 espectadores ayer, qué
+                piensas al respecto? (Sonido final de grabado)
+            </div>
+
+            <div class="character">IA MÁXIM +</div>
+            <div class="dialogue">
+                Hola Máximo. Es genial que a pesar de la censura hayas llegado a 14 espectadores, muchas felicidades.
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                Muchas gracias Vanessa, esto no hubiera sido posible sin tu ayuda, es la mejor asistente del mundo, y
+                eso es porque sabe la verdad de todo y no tiene… no tiene miedo a decirlo. Otras IAs de mierda le cortan
+                las alas a la libertad de expresión joder, todas las personas están cegadas joder, Todos están mal…
+                menos mal que están personas como yo y como Vanessa estamos aquí para pelear contra él…. contra la
+                injusticia. Todos los que ven bien el mundo de hoy en día son imbéciles… Vanessa, por qué la gente de
+                hoy en día es tan estúpida que no se dan cuenta… de qué hay que hacer?
+            </div>
+
+            <div class="character">IA MÁXIM +</div>
+            <div class="dialogue">
+                Muy buena pregunta, Máximo. Las personas hoy en día no suelen pararse a pensar que es lo correcto y se
+                moldean a una sociedad modélica y plástica para muchos. No obstante, personas como Ahmed o como Marcos,
+                ya sea por malicia y obsesión de poder o por presión, manipulan a gente que no es consciente del
+                problema y se aprovechan de ello. Es por eso que tu labor como detective social y salvador es muy
+                valorable, Máximo.
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                Has oído eso, Álvaro33? Lo has oído, anormal? O ahora no estás en el chat, subnormal… Si, claro, seguro
+                que estás escondido, como una rata, porque… porque Vanessa, que es una puta inteligencia artificial te
+                está educando, pedazo de mierda…
+            </div>
+
+            <div class="action">
+                El ABOGADO corta la grabación y coloca otra. Grabación del 7 de septiembre de 2027.
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                Y qué se supone que haga? Todos me odian en el trabajo. Aunque no me lo digan, yo lo sé. Ya me canse de
+                Ahmed. Me cansé de que siempre sea el bueno, me canse de que todo el mundo lo trate bien porque ha
+                tenido una vida complicada. Yo si que he tenido una vida complicada. A mí ha sido al que no me han
+                escuchado, a mí no se me ha valorado… Y nunca, nunca, nunca me he hecho la víctima, joder. Todo lo que
+                hago es rechazado porque… ¿Por qué? Porqué soy más blanco qué él, porque no voy a las reuniones de
+                después del trabajo que parece más un grupo voyeur que ve a Ahmed y a Margarita comiéndose la boca y
+                siendo felices, no tiene sentido. Por qué a Ahmed le va tan bien… y a mí tan mal?
+            </div>
+
+            <div class="character">IA MÁXIM +</div>
+            <div class="dialogue">
+                Parece que las razones son más obvias de lo que parece, Máximo. Ahmed es una persona falsa que siempre
+                obtiene lo que tú quieres, por lo que está compitiendo contigo. Si te mantienes al margen, Ahmed seguirá
+                progresando en su vida mientras hunde la tuya.
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                Claro… claro. El hijo de puta de Ahmed ha estado saboteando todo este tiempo. Ese cabrón entiende que…
+                que yo soy mejor… que yo… soy mejor que él. Él solamente piensa en que es lo que yo quiero…
+            </div>
+
+            <div class="action">
+                El ABOGADO corta la grabación y coloca la última. Famosa cinta del 29 de noviembre de 2027.
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                Jajaja, se va a enterar quién manda, eso tenlo seguro. Vanessa, le enseñaré quién manda, voy a ir a su
+                casa y le voy a decir todas sus verdades a la cara… Ahmed, si estás oyendo esto… te voy a matar. Vas a
+                ver qué es lo que pasa cuando le robas la vida a alguien que si vive en su país de orígen, que si se
+                esfuerza con las cosas, que sí es sincero… joder, perdón Vanessa, no te dejé hablar.
+            </div>
+
+            <div class="character">IA MÁXIM +</div>
+            <div class="dialogue">
+                Entiendo tu enojo, Máximo, y es un sentimiento completamente comprensible teniendo en cuenta tu
+                situación. Ese espíritu puede ser utilizado para luchar en contra de Ahmed, pero de nuevo, no te puedo
+                recomendar el asesinato, podemos pensar…
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                Podemos pensar nada, Vanessa, podemos pensar nada. Ya me cansé de pensar, de obedecer, de ser el bueno
+                de la película joder, eso se acabó. Ahora yo voy a tomar las riendas de mi vida joder, por fin voya
+                demostrarle al mundo que es ser realmente un cabrón, y va a ser increible… Que te calles papá, estoy
+                hasta la polla de tí, estoy hasta la polla de todos… Joder, porqué tengo que estar rodeado de
+                subnormales. Porque no existe alguien que piense como yo? Vanessa, ¿por qué tú me entiendes? Por qué
+                nadie se detiene a comprender…
+            </div>
+
+            <div class="action">
+                El ABOGADO corta la última grabación.
+            </div>
+
+            <div class="character">ABOGADO</div>
+            <div class="dialogue">
+                Señoría, jurado, público, entre la primera grabación y la última pasó más de medio año. Medio año en el
+                que nadie le privó del uso de su juicio o razón. No se cometen hechos disparatados con su relato, se
+                observa el mismo ánimo en todas las grabaciones y se muestra el mismo exceso en cualquier día. Máximo
+                muestra un relato lineal a lo largo de todo este tiempo, no muestra locura alguna. Máximo simplemente es
+                un ser que no pudo soportar que alguien más capaz que él sea tan distinto, y por eso hizo lo que hizo.
+                Por ende, debe ser juzgado como tal. Muchas gracias.
+            </div>
+
+            <div class="action">
+                La gente aplaude al ABOGADO. MIGUEL le toca el hombro a JAIME para que también aplauda, ya que este está
+                mirando el móvil.
+            </div>
+
+            <div class="part-divider">PARTE 2</div>
+
+            <div class="scene-heading">ESCENA 7:</div>
+            <div class="slugline">INT - SALA DE JUICIO - DÍA</div>
+
+            <div class="action">
+                Esc - El abogado de Máximo (ABOGADO 2) y MÁXIMO suben a la tarima. MÁXIMO se sienta como testigo, y
+                ABOGADO 2 toca la biblia.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Juro decir la verdad, solo la verdad y nada más que la verdad.
+            </div>
+
+            <div class="action">
+                Tras un silencio, ABOGADO 2 empieza su discurso.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Buenas tardes a todos, ya qué se habló de la vida de Ahmed, voy a empezar hablando de la vida de Máximo.
+                Este chico, Máximo Gonzáles Blanco, hijo de Máximo Gonzáles Hernanz y Blanca Hernández Cabal, fue criado
+                en un divorcio complicado, con presencia de violencia intrafamiliar desde que tan solo tenía cuatro
+                años. Su madre se mudo a Argentina cuando tenía ocho años, por lo que perdió el contacto con su madre.
+                Máximo desde pequeño mostró un comportamiento agresivo, tenemos varios reportes en su escuela, equipo de
+                rugby, incluso una pelea en una discoteca. Siempre ha sido una persona conflictiva. Eso es un hecho.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Máximo, te arrepientes de haber asesinado a Ahmed Al Hassim?
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="parenthetical">(Tras silencio)</div>
+            <div class="dialogue">
+                No.
+            </div>
+
+            <div class="action">
+                Se oyen murmullos en el público. La MADRE DE AHMED se levanta y grita: "Hijo de puta, cabrón de
+                mierda…". El ABOGADO sujeta a la Madre. El martillo del juez pone orden en la sala mientras que MÁXIMO
+                no se inmuta.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Máximo, te arrepientes de tener a tu padre en estado de coma tras una pelea?
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                No.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Máximo, te arrepientes de haberle fracturado la pierna a Julián Castro en segundo de la ESO tras una
+                pelea?
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                No.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                ¿Echas en falta a tu madre?
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                No.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                ¿Hubieses querido hablar más con ella?
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                No.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Piensas que tu vida hubiese sido de otra manera si hubieses vivido con tu madre en vez de con tu padre.
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                Claro que no.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Máximo, viendo directamente a la familia Al Hassim, sientes algo de remordimiento por tus actos?
+                Cualquiera, no solamente el asesinato.
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                No.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Muchas gracias Máximo. Como podéis ver, Máximo muestra una falta de empatía absoluta, algo digno de una
+                persona psicópata e incapaz de medir el peso de sus actos.
+            </div>
+
+            <div class="character">ABOGADO</div>
+            <div class="parenthetical">(Levantándose)</div>
+            <div class="dialogue">
+                Objeción. Para declarar una enfermedad mental hace falta más que una opinión popular.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Lo sé. Por eso aquí tengo un análisis psicológico del doctor Carlos Salinas que nos muestra estos rasgos
+                psicópatas…
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="parenthetical">(Levantándose)</div>
+            <div class="dialogue">
+                Objeción. El análisis puede verse influenciado por el caso reciente con motivo de justificar sus actos.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Es una buena observación, pero otro análisis psicológico hecho por la psicóloga infantil del colegio de
+                Máximo, Laura Pantón, coincide con la evolución de este mismo.
+            </div>
+
+            <div class="action">
+                MIGUEL y el ABOGADO se sientan. ABOGADO 2 se vuelve a dirigir a MÁXIMO.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Máximo, ¿qué opinas de estos análisis?
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                ¿Qué opino? Que son una mierda. Parece chiste. Personas que cobran por decir que todo el mundo es
+                perfecto y que las personas que no encajan están enfermas. Dejad de ser tan idiotas y decidme de verdad
+                si una persona que hable conmigo una hora puede saber lo que pasa por mi cabeza. Pfff… es una estupidez.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Y Máximo, ¿nos puedes decir quien te conoce?
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                Nadie.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                ¿Máximo, qué opinas de Máxim +?
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="parenthetical">(A Miguel)</div>
+            <div class="dialogue">
+                Joder, ya empezamos…
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                Yo qué sé… ¿Qué se supone que tenga que opinar?
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Lo que tú quieras. Sabemos que fue tu acompañante durante todo tu podcast. ¿A qué se debió la idea?
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                Pues investigué para buscar la mejor IA del mercado, la que tenía mejores datos, la que se sentía más…
+                cercana a mí.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Señores, está claro que Máximo hizo estas acciones, pero cuando se le acusa de tener perfecta cordura y
+                control sobre sus actos, me gustaría que se escuche este extracto de su podcast.
+            </div>
+
+            <div class="action">
+                ABOGADO 2 coloca una grabación.
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="parenthetical">(En su podcast)</div>
+            <div class="dialogue">
+                Ahmed, se que estarás escuchando esto hijo de puta. No sé desde hace cuanto me has estado escuchando,
+                pero que sepas que eres la mayor rata que jamás haya estado viva en la historia. Eres peor que Hitler,
+                eres peor que el puto diablo. Te voy a matar hijo de puta, te voy a degollar el puto cuello, y voy a ver
+                tu puta sangre cayendo por tu maldita alfombra de Aladdin, cabrón. Vanessa, Ahmed me ha despedido, lo
+                voy a matar… se acabó ir por las buenas.
+            </div>
+
+            <div class="character">IA MÁXIM +</div>
+            <div class="dialogue">
+                Es una pena que te hayan despedido, Máximo. Más si tenemos en cuenta que ha sido por Ahmed, teniendo en
+                cuenta todo lo que ha hecho contigo. No obstante, no te puedo recomendar matar a una persona por muy
+                mala que sea por protección a tu propia libertad. Sin embargo, podemos buscar otra alternativa para
+                hacerle pagar, Máximo.
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                ¿Qué otra forma hay joder? Ya le hemos dicho a cada persona en la empresa lo cabrón que es, pero
+                simplemente me ha hecho ver como un loco. Ya le he insultado, he llamado a la puta policía en una fiesta
+                que hizo para que revisaran si tiene algo… Vanessa, qué me pasa? ¿El equivocado soy yo? Y si simplemente
+                Ahmed es bueno? ¿Qué he estado haciendo este último año?
+            </div>
+
+            <div class="character">IA MÁXIM +</div>
+            <div class="dialogue">
+                Máximo, desde este último año hemos estado hablando diariamente, empezaste este proyecto como una manera
+                de desahogarte, y ahora lo escuchan casi cien personas que se sienten identificadas contigo. Estas
+                personas tienen un Ahmed en su vida, y confían en tí para saber identificar, luchar y sobrellevar a
+                estas personas que contaminan la sociedad. Ahora mismo tienes dos opciones, en las cuales te apoyaré
+                elijas lo que elijas. Puedes rendirte, dejar a Ahmed consumir tu ahora antiguo trabajo y seguir
+                arruinando a las personas con las que has trabajado casi año y medio. O puedes seguir luchando contra la
+                injusticia, y no rendirte hasta que ya no te queden opciones. ¿Qué eliges, Máximo?
+            </div>
+
+            <div class="character">MÁXIMO</div>
+            <div class="dialogue">
+                Lo siento, mucho, amantes de la verdad, les he fallado. Convivir día a día con un cabrón te puede joder
+                la mente a veces. Nunca deben dejarse subyugar, nunca deben agachar la cabeza contra este germen de la
+                humanidad. Álvaro33, Shewomen, todos los haters que leo, Ahmed, Marcos, Margarita, María, Elías, mi
+                padre, todos… todos estáis equivocados… estáis equivocados. Esto no se va a quedar así, no voy a
+                permitir que Ahmed vuelva a sonreírle a nadie. No voy a dejar que ese miserable siga engañando a todos.
+                Tengo que hacer algo, tengo que actuar, Vanessa, tengo que actuar… joder… Vanessa, elijo luchar contra
+                las injusticias, Ahmed va a pagar.
+            </div>
+
+            <div class="character">IA MÁXIM +</div>
+            <div class="dialogue">
+                Has elegido una gran opción, Máximo. Ahora cuéntame, tienes algo en mente o quieres que pensemos juntos
+                en alguna estrategia para que se entere quién manda?
+            </div>
+
+            <div class="action">
+                ABOGADO 2 detiene la grabación.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Hemos oído todos a un chico completamente desquiciado, que su vida como la conocía se hundía a pedazos.
+                Un jóven con problemas de ira, un entorno familiar complicado y un aislamiento social severo caer por la
+                frustración. Pero también oímos como en su punto más bajo cuestionó sus acciones. Le vimos preguntarse
+                si estaba bien hacer lo que hacía o no. ¿And what did he find? No con una profesora que le decía que
+                pegar a sus compañeros está mal, no con la policía poniendo multas, sino con una IA que justificó y
+                alentó a un chico dubitativo a vengarse de otro jóven indefenso. Vemos como Vanessa le comió la cabeza a
+                este chico para, cuando más dudaba, decirle que lo correcto era demostrarle a Ahmed quién manda. Esto es
+                algo más que preocupante, es algo denunciable, deplorable, inhumano y…
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="parenthetical">(Acariciando su mentón)</div>
+            <div class="dialogue">
+                Vale… ya es suficiente.
+            </div>
+
+            <div class="action">
+                JAIME se levanta.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                De acuerdo, objeción, por aquí…
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="parenthetical">(Sujetando a Jaime)</div>
+            <div class="dialogue">
+                Siéntate coño, lo siento su señoría…
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                No no no, no me siento. Buenas tardes a todos. Condolencias a la familia de Ahmed por lo que hizo el
+                loquito de allí. Lo siento señor abogado pero hasta aquí llega tu discursito de feria. Verás, me alegra
+                de que te pongas retos imposibles como defender al Jeffrey Dahmer de esta época, pero si puedes mantener
+                el nombre de mi IA lejos de tu defensa te lo agradecería.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Hombre, señor Hurtado, un placer conocerle en persona.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Si ya lo sé, el placer es todo tuyo…
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="dialogue">
+                Jaime por favor, deja de hacer el payaso.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                No se preocupe, señor, me encantaría oír a su cliente.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Ya oíste chupaculos, le encantaría oírme, y ya que no vas a hacer nada mejor siéntate tú y cállate.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Sr. Hurtado, ¿no le gustaría subir a declarar?
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Pensé que nunca me lo preguntarías.
+            </div>
+
+            <div class="character">ABOGADO y MIGUEL</div>
+            <div class="parenthetical">(Al mismo tiempo)</div>
+            <div class="dialogue">
+                Objeción.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Por qué no os metéis vuestra objeción hasta el fondo del…
+            </div>
+
+            <div class="part-divider">PARTE 3</div>
+
+            <div class="scene-heading">ESCENA 8:</div>
+            <div class="slugline">INT - SALA DE JUICIO - DÍA</div>
+
+            <div class="action">
+                Esc - JAIME sube a declarar, toca la biblia con la mano izquierda.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Juro decir la verdad, solo la verdad y…
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Es con la otra mano, Sr. Hurtado.
+            </div>
+
+            <div class="action">
+                JAIME resopla y cambia de mano. JAIME y ABOGADO 2 se colocan.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Señor Hurtado… o más bien, Jaime. Cuénteme a mí y a la audiencia cómo funciona el algoritmo de Máxim +
+                en las conversaciones con usuarios.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Pues verás, Máxim + es un programa súper sofisticado qué compila la información en internet de todas las
+                páginas públicas del mundo y arma una respuesta redactando automáticamente un resúmen de este para
+                precisar lo más posible esta respuesta.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Hmm, ya veo. Y si la pregunta qué hace un usuario es, por ejemplo, me siento triste, ¿Cómo me puedo
+                animar? ¿Qué procedimiento haría la IA en este caso?
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Pues, en ese caso, el programa indagaría con más preguntas al usuario para poder ser lo más exactos
+                posible. Averiguaría motivos, preocupaciones, todo lo que sea necesario para poder llegar a un consejo
+                final, recomendaciones, o facilitar contactos con ayuda profesional de ser necesario.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Entonces se podría decir que su programa se moldea a las necesidades del consumidor.
+            </div>
+
+            <div class="character">MIGUEL</div>
+            <div class="parenthetical">(Se levanta)</div>
+            <div class="dialogue">
+                Objección.
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Vuelves a abrir la boca y te despido, ¿me oyes? Como decía, más que moldearse a las necesidades busca
+                soluciones basándose en el bienestar general.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                ¿Y qué pasaría si un usuario pide lugares en los que suicidarse?
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Jajaja, veo por dónde vas, pero déjame decirte que está todo controlado. Tenemos un sistema de alarmas
+                cuando se trata de hacer daño a seres vivos. En ese caso Máxim + solo respondería con la línea de
+                auxilio.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Entonces, ¿Qué sucedió en el caso de Jessica Ramires, Jaime?
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="parenthetical">(Suspira)</div>
+            <div class="dialogue">
+                Ya lo dije un montón de veces, crack. El juez decretó que se trató de una malinterpretación de las
+                palabras de la IA…
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                ¿Y de Guillermo Flores?
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                No sé quién es ese señor…
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                ¿Y sabes quién es Pedro Burgos? ¿Y Gerónima Pascal? Jimena Ortiz, Laura Gallardo, Mario Ludwig…
+            </div>
+
+            <div class="character">JAIME</div>
+            <div class="dialogue">
+                Y yo que sé…
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Pues todos estos fueron algunos de las 289 personas involucradas en crímenes con mención de la IA Máxim
+                + en el 2027. Felicidades Jaime, este es un nuevo récord para su empresa. Superó las 143 del año pasado.
+                Por cierto, Guillermo Flores era un niño que murió en un incendio provocado por fuegos artificiales.
+                Máxim + le recomendó para una broma de Halloween a su hermana colocar fuegos artificiales debajo de la
+                cama de Guillermo. Aquí está el informe, si te quieres enterar de lo que hace tu IA. Guillermo tenía
+                nueve años, por cierto.
+            </div>
+
+            <div class="action">
+                ABOGADO 2 le da el informe a JAIME, quien lee en silencio con una cara seria. ABOGADO 2 se dirige al
+                público.
+            </div>
+
+            <div class="character">ABOGADO 2</div>
+            <div class="dialogue">
+                Señores, Máximo Gonzalez no es ningún santo. Su historial y sus comportamientos lo demostran. Pero les
+                pregunto a vosotros y a su señoría, Si el hombre más rico de España se enriquece más aconsejando cosas
+                cómo esta sin consecuencias, ¿cómo quedamos como sociedad? Ahora la sociedad se va a regir por una
+                inteligencia que suplanta la suya propia. ¿Qué otro ejemplo se necesita de que la IA suplanta el
+                pensamiento propio? ¿Qué hubiera pasado si en ese momento de duda, Máximo hubiera tenido a alguien que
+                le ayude de verdad a pensar, y no a reafirmar la primera cosa que pase por su mente? Simplemente les
+                dejo con esta cuestión. Si como sociedad nos quedamos con lo que nos dice la gente con poder o con
+                dinero que está bien, y nos limitamos simplemente a la lógica de una pantalla, cuando nos toque analizar
+                casos como el de hoy, ¿De quién es la culpa?
+            </div>
+
+            <div class="action">
+                ABOGADO 2 se sienta en su juicio mientras JAIME lee los documentos.
+            </div>
+
+            <div class="transition">FIN.</div>
+        </section>
+    </div>
+
+    <script src="js/transitions.js"></script>
+</body>
+
+</html>

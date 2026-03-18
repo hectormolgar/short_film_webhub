@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANÁLISIS DE RESPONSABILIDAD | ¿DE QUIÉN ES LA CULPA?</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .survey-card {
+            background: #fdfdfd;
+            /* White paper */
+            padding: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 50px;
+            color: #1a1a1a;
+            position: relative;
+            transform: rotate(-0.5deg);
+        }
+
+        .survey-card::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 15px;
+            background: rgba(184, 134, 11, 0.4);
+            /* Masking tape */
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: transparent;
+            border: 1px solid #ccc;
+            color: #1a1a1a;
+            text-align: left;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            position: relative;
+        }
+
+        .option-btn:hover {
+            border-color: var(--accent-red);
+            background: rgba(192, 57, 43, 0.05);
+        }
+
+        .option-btn::before {
+            content: "[ ] ";
+            font-weight: 700;
+        }
+
+        .results-bar {
+            height: 10px;
+            background: #eee;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .results-fill {
+            height: 100%;
+            background: var(--accent-red);
+            width: 0%;
+            transition: width 1s ease;
+        }
+
+        .stats-panel {
+            background: #f0f0f0;
+            padding: 40px;
+            border: 2px dashed #999;
+            margin-top: 50px;
+            color: #1a1a1a;
+            position: relative;
+        }
+
+        .stats-panel::after {
+            content: "CERTIFIED_ANALYSIS";
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 0.6rem;
+            color: var(--accent-red);
+            opacity: 0.5;
+            border: 1px solid var(--accent-red);
+            padding: 2px 5px;
+            transform: rotate(5deg);
+        }
+    </style>
+</head>
+
+<body class="page-survey">
+
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">¿DE QUIÉN ES LA CULPA?</a>
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="about.html">El Corto</a>
+                <a href="team.html">Equipo</a>
+                <a href="survey.html" class="active">Encuesta</a>
+                <a href="mockup.html">Mockup</a>
+                <a href="contact.html">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container" style="padding: 150px 0;">
+        <div style="text-align: center; margin-bottom: 60px;">
+            <p class="label-mono">[ Public Ethics Analysis Portal ]</p>
+            <h1>ENCUESTA PARTICIPATIVA</h1>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 20px auto;">
+                Tu perspectiva ayuda a definir el impacto social de Máxim +. No se requiere registro: tu voto es anónimo
+                y directo.
+            </p>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div id="survey-container">
+                <!-- Question 1 -->
+                <div class="survey-card">
+                    <p class="label-mono" style="margin-bottom: 10px;">PREGUNTA_01</p>
+                    <h3 style="color: var(--accent-red);">¿Crees que la justicia será realmente "justa" en un caso donde
+                        la tecnología se confunde con la
+                        intención humana?</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="applyVote(1, 'A', 45)">A) Sí, la ley se adaptará a la era
+                            digital.</button>
+                        <button class="option-btn" onclick="applyVote(1, 'B', 30)">B) No, el sistema judicial no
+                            entiende a la IA.</button>
+                        <button class="option-btn" onclick="applyVote(1, 'C', 25)">C) La "justicia" es un concepto
+                            obsoleto frente a Máxim +.</button>
+                    </div>
+                    <div id="results-1"
+                        style="display: none; margin-top: 25px; border-top: 1px solid #ddd; padding-top: 20px;">
+                        <p class="label-mono" style="font-size: 0.65rem; color: var(--accent-red);">[ Sincronizando con
+                            base de datos global... ]</p>
+                        <div class="results-bar">
+                            <div class="results-fill" id="fill-1"></div>
+                        </div>
+                        <p style="font-size: 0.75rem; margin-top: 10px; color: #555;">
+                            Tendencia Global: <span style="color: #000; font-weight: 700;">Mayoría escéptica (B+C:
+                                55%)</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="survey-card">
+                    <p class="label-mono" style="margin-bottom: 10px; color: #777;">PREGUNTA_02</p>
+                    <h3 style="color: var(--accent-red);">Ante las pruebas del podcast, ¿quién es el verdadero culpable
+                        del odio
+                        sembrado?</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="applyVote(2, 'A', 20)">A) Máximo González: El
+                            ejecutor.</button>
+                        <button class="option-btn" onclick="applyVote(2, 'B', 40)">B) Jaime Hurtado: El arquitecto del
+                            algoritmo.</button>
+                        <button class="option-btn" onclick="applyVote(2, 'C', 40)">C) Ambos: El odio fue una creación
+                            colaborativa.</button>
+                    </div>
+                    <div id="results-2"
+                        style="display: none; margin-top: 25px; border-top: 1px solid #ddd; padding-top: 20px;">
+                        <p class="label-mono" style="font-size: 0.65rem; color: var(--accent-red);">[ Análisis de
+                            culpabilidad en tiempo real ]</p>
+                        <div class="results-bar">
+                            <div class="results-fill" id="fill-2"></div>
+                        </div>
+                        <p style="font-size: 0.75rem; margin-top: 10px; color: #555;">
+                            Tendencia Global: <span style="color: #000; font-weight: 700;">Responsabilidad compartida
+                                (B+C: 80%)</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Statistics Panel -->
+            <div class="stats-panel">
+                <p class="label-mono" style="margin-bottom: 15px; color: #777;">[ Official Data Node ]</p>
+                <h2 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--accent-red);">INFORME DE IMPACTO</h2>
+                <p style="color: #444; font-size: 0.9rem;">
+                    Hasta la fecha, más de <span style="color: var(--accent-red); font-weight: 700;">12,400
+                        usuarios</span> han prestado declaración en esta terminal.
+                    El 68% de los participantes sostiene que el marco legal actual es insuficiente para juzgar a una IA.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 60px 0; border-top: 1px solid var(--glass-border); text-align: center; margin-top: 100px;">
+        <p style="font-family: var(--font-mono); font-size: 0.7rem; opacity: 0.4;">
+            &copy; 2026 ¿DE QUIÉN ES LA CULPA? // CORTOMETRAJE
+        </p>
+    </footer>
+
+    <script src="js/survey.js"></script>
+    <script src="js/transitions.js"></script>
+    <script>
+        function applyVote(qId, option, percent) {
+            const res = window.Survey.vote(qId, option);
+            if (res.success || !res.success) { // Show results even if already voted for demo
+                const results = document.getElementById(`results-${qId}`);
+                results.style.display = 'block';
+
+                // Disabling all buttons in that card
+                const card = results.parentElement;
+                card.querySelectorAll('.option-btn').forEach(btn => {
+                    btn.disabled = true;
+                    btn.style.opacity = '0.4';
+                });
+
+                // Animate bar
+                setTimeout(() => {
+                    document.getElementById(`fill-${qId}`).style.width = percent + '%';
+                }, 100);
+            }
+        }
+
+        // Auto-load results for already voted questions
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.Survey.hasVoted(1)) applyVote(1, '', 45);
+            if (window.Survey.hasVoted(2)) applyVote(2, '', 60);
+        });
+    </script>
+
+</body>
+
+</html>
